@@ -1,8 +1,13 @@
+'use client';
+
 import React from "react";
 import Link from "next/link";
 import { ImBug } from "react-icons/im";
+import { usePathname } from "next/navigation";
 
 const NavBar = () => {
+    const currPath = usePathname();
+
   const links = [
     {
       label: "Dashboard",
@@ -26,7 +31,7 @@ const NavBar = () => {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-zinc-500 hover:text-zinc-800 transition-colors font-medium"
+                className={`${link.href === currPath? 'text-zinc-900' : 'text-zinc-500'} hover:text-zinc-800 transition-colors font-medium`}
               >
                 {link.label}
               </Link>
