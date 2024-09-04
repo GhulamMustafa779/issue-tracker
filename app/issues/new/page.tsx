@@ -1,5 +1,7 @@
 import React from 'react'
 import { TextArea, TextField, Button } from '@radix-ui/themes'
+import MarkdownEditor from './MarkdownEditior'
+
 
 const NewIssuePage = () => {
   return (
@@ -7,7 +9,7 @@ const NewIssuePage = () => {
         <TextField.Root placeholder='Title'>
             <TextField.Slot/>
         </TextField.Root>
-        <TextArea placeholder='Description' />
+        <MarkdownEditor />
         <Button>Create New Issue</Button>
     </div>
   )
