@@ -3,11 +3,7 @@
 import React, { useState } from "react";
 import { TextField, Button, Callout} from "@radix-ui/themes";
 import { useForm, Controller } from "react-hook-form";
-import dynamic from "next/dynamic";
-const SimpleMDE = dynamic(() => import("react-simplemde-editor"), {
-  ssr: false,
-  loading: () => <p>Loading...</p>,
-}); 
+import SimpleMDE from 'react-simplemde-editor';
 import "easymde/dist/easymde.min.css";
 import axios from "axios";
 import { useRouter } from "next/navigation";
@@ -43,6 +39,7 @@ const IssueForm = ({issue}: {issue?:Issue}) => {
         await axios.post("/api/issues", data);
 
       router.push("/issues");
+      router.refresh();
     } catch (error) {
       setSubmitting(false); 
       setError("An unexpected error has occurred");
