@@ -5,10 +5,9 @@ import Link from "next/link";
 import { ImBug } from "react-icons/im";
 import { usePathname } from "next/navigation";
 import { useSession } from "next-auth/react";
-import { Box, Flex, Container, DropdownMenu, Text } from "@radix-ui/themes";
+import { Box, Flex, Container, DropdownMenu, Text, Avatar } from "@radix-ui/themes";
 import classNames from "classnames";
 import Skeleton from "@/app/components/Skeleton";
-import { Avatar, AvatarImage, AvatarFallback } from "@radix-ui/react-avatar";
 
 const NavBar = () => {
   return (
@@ -76,16 +75,13 @@ const AuthStatus = () => {
     <Box>
       <DropdownMenu.Root>
         <DropdownMenu.Trigger>
-          <Avatar className="cursor-pointer">
-            <AvatarImage
-              src={session?.user?.image!}
-              alt="User"
-              referrerPolicy="no-referrer"
-            />
-            <AvatarFallback>
-              {session?.user?.name?.charAt(0) || "?"}
-            </AvatarFallback>
-          </Avatar>
+          <Avatar 
+          src={session?.user?.image!}
+          fallback="User"
+          referrerPolicy="no-referrer"
+          className="cursor-pointer"
+          size='2'
+          />
         </DropdownMenu.Trigger>
         <DropdownMenu.Content>
           <DropdownMenu.Label>
