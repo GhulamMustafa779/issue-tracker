@@ -22,10 +22,14 @@ const AssigneeSelect = ({issue}:{issue: Issue}) => {
   if(error) return null;
 
   return (
+    <>
     <Select.Root 
     defaultValue={issue.assignedToUserId || "unassigned"}
     onValueChange={(userId)=> {
       axios.patch('/api/issues/'+issue.id,{assignedToUserId: userId !== "unassigned" ? userId : null})
+      .catch(()=>{
+        toast.error("Changes could not be saved.")
+      })
     }}>
         <Select.Trigger placeholder='Assign...'/>
         <Select.Content>
@@ -40,6 +44,8 @@ const AssigneeSelect = ({issue}:{issue: Issue}) => {
             </Select.Group>
         </Select.Content>
     </Select.Root>
+    <Toaster/>
+    </>
   )
 }
 
