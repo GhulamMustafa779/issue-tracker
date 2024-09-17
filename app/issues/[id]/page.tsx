@@ -12,7 +12,7 @@ import AssigneeSelect from "./AssigneeSelect";
 
 
 interface Props {
-  params: { id: string };
+  params: { id: string }; 
 }
 
 const fetchUser = cache((issueId: number)=> {
